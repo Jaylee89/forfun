@@ -1,53 +1,0 @@
-8
-
-dir
-10463
-svn://218.206.31.139/fbty/develop/projects/grimp/trunk/AndroidGrimp1.0/res
-svn://218.206.31.139
-
-
-
-2011-03-02T02:05:21.090625Z
-10450
-lvbingfeng
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-e7075f58-a85f-f344-b845-feb1385c381f
-
-values
-dir
-
-drawable-hdpi
-dir
-
-
-
-delete
-
-anim
-dir
-
-drawable-ldpi
-dir
-
-drawable-mdpi
-dir
-
-raw
-dir
-
-layout
-dir
-
