@@ -1,0 +1,52 @@
+8
+
+dir
+10463
+svn://218.206.31.139/fbty/develop/projects/grimp/trunk/AndroidGrimp1.0/src/com/fbty/base/annotation
+svn://218.206.31.139
+
+
+
+2011-03-02T02:04:43.465625Z
+10445
+mominglong
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e7075f58-a85f-f344-b845-feb1385c381f
+
+ValidateEditText.java
+file
+
+
+
+
+2011-03-02T06:44:33.156250Z
+a5013d3dcc547b21bdb9f254f8c84ea1
+2011-03-02T02:04:43.465625Z
+10445
+mominglong
+
+Validatable.java
+file
+
+
+
+
+2011-02-15T01:02:20.171875Z
+95909ad4b60fbbe65911f8c56eb1884d
+2011-02-14T08:49:46.594375Z
+9749
+zhoulei
+

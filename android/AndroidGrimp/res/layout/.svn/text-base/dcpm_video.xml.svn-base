@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" 
+	android:background="@drawable/tianxie" 
+	android:padding="20dp"
+	>
+	
+	<TableRow
+		android:gravity="center"
+	android:layout_height="fill_parent">
+	<ImageButton
+		android:layout_weight="1"
+		android:id="@+id/shexiang" 
+		android:layout_height="60dp"
+		android:layout_width="50dp"
+		android:scaleType="centerInside"
+		></ImageButton>
+	<TextView
+		android:layout_weight="2"
+		android:text="            "
+	></TextView>
+	<ImageButton android:layout_height="250dp"
+		android:id="@+id/video"
+		android:background="#70ffffff"
+		android:layout_width="150dp" 
+		android:layout_weight="6" 
+		android:scaleType="centerCrop"/>
+	<TextView
+		android:layout_weight="2"
+		android:text="            "
+	></TextView>
+	</TableRow>
+</TableLayout> 

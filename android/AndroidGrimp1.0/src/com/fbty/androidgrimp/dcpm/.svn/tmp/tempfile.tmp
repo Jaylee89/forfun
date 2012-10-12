@@ -1,0 +1,612 @@
+package com.fbty.androidgrimp.dcpm;
+
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.http.client.ClientProtocolException;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+
+import com.fbty.androidgrimp.R;
+import com.fbty.androidgrimp.dao.SectionDao;
+import com.fbty.androidgrimp.domain.Section;
+import com.fbty.androidgrimp.listener.MyListButtonOnClick;
+import com.fbty.androidgrimp.util.GobalApplication;
+import com.fbty.androidgrimp.util.GrimpConstants;
+import com.fbty.base.activity.BaseActivity;
+import com.fbty.base.adapter.DataListViewAdapter;
+import com.fbty.base.util.FormFile;
+
+/**
+ * 
+ * <p>
+ * Title:
+ * </p>
+ * <p>
+ * Description:
+ * </p>
+ * <p>
+ * Company:重庆富邦科技发展有限责任公司
+ * </p>
+ * 
+ * @author lvbingfeng create 2011-1-25
+ * 
+ * @version 0.1
+ * 
+ */
+public class DcpmObservationPointActivity extends BaseActivity {
+	private static final int ADD = 1;
+	private DataListViewAdapter sa;
+	private SectionDao sectionDao;
+	private int pageNo = 1;
+	private int pageSize = 10;
+	private String wildNumber;
+
+	private ArrayList<HashMap<String, Object>> data;
+	private HashMap<String, Object> datas;
+
+	private ProgressBar pb;
+	private TextView tv;
+	private int fileSize;
+	private int downLoadFileSize;
+	private String imgSrc;
+	private String videoSrc;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.dcpm_obervation);
+		sectionDao = new SectionDao(DcpmObservationPointActivity.this);
+		wildNumber = getIntent().getStringExtra("wildNumber");
+		data = getData();
+		// 创建一个适配器
+		sa = new DataListViewAdapter(this, data,
+				R.layout.dcpm_observation_item, new String[] { "id",
+						"inquirerHuman", "searchTime", "observeFirstLocation",
+						"trafficState", "coordinatesX", "coordinatesY", "del",
+						"update", "submit" }, new int[] { R.id.oid,
+						R.id.observation_name, R.id.observation_time,
+						R.id.position, R.id.traffic, R.id.longitude,
+						R.id.latitude, R.id.o_delBtn, R.id.o_updateBtn,
+						R.id.o_submitBtn });
+
+		ListView list = (ListView) findViewById(R.id.observatonList);
+		list.setAdapter(sa);
+		list.setOnItemClickListener(new ItemClickListener());
+		setTitle("观测点信息");
+
+	}
+
+	/**
+	 * 
+	 * Description: <br>
+	 * 获取数据
+	 * 
+	 * @return
+	 */
+	public ArrayList<HashMap<String, Object>> getData() {
+		HashMap<String, String> filter = new HashMap<String, String>();
+		filter.put("wildNumber", wildNumber);
+		filter.put("isEnd", GrimpConstants.OBSERVE_POINT + "");
+		ArrayList<HashMap<String, Object>> data = new SectionDao(this)
+				.getAllMapData(filter);
+		int size = data.size();
+		for (int i = 0; i < size; i++) {
+
+			HashMap<String, Object> hashMap = data.get(i);
+			System.out.println("DcpmObservationPointActivity+++++++++++++86"
+					+ hashMap.get("coordinatesX"));
+			hashMap.put("coordinatesX", convertDouble(hashMap.get(
+					"coordinatesX").toString()));
+			hashMap.put("coordinatesY", convertDouble(hashMap.get(
+					"coordinatesY").toString()));
+			// Date d = null;
+			//		
+			// if(hashMap.get("searchTime") != null){
+			// try {
+			// d = new
+			// SimpleDateFormat(GrimpConstants.DATE_FORMAT_STRING,Locale.US).parse((String)
+			// hashMap.get("searchTime"));
+			// } catch (ParseException e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+			// }
+			hashMap.put("searchTime", (String) hashMap.get("searchTime"));
+			// }
+			hashMap.put("del", new MyDelBtnListener());// 为删除按钮添加事件
+			hashMap.put("update", new MyUpdateBtnListener());// 为更新按钮添加事件
+			hashMap.put("submit", new MySubmitBtnListener());// 为详情按钮添加事件
+		}
+		return data;
+	}
+
+	// private Handler handler = new Handler() {
+	// public void handleMessage(Message msg) {// 定义一个Handler，用于处理下载线程与UI间通讯
+	// if (!Thread.currentThread().isInterrupted()) {
+	// switch (msg.what) {
+	// case 0:
+	// //pb.setMax(fileSize);
+	// case 1:
+	// int result = downLoadFileSize * 100 / fileSize;
+	// try {
+	// Thread.sleep(2000);
+	// } catch (InterruptedException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// //pb.setProgress(result);
+	// //tv.setText(result + "%");
+	// break;
+	// case 2:
+	// Toast.makeText(DcpmObservationPointActivity.this, "文件上传完毕完成", 1).show();
+	// break;
+	//
+	// case -1:
+	// String error = msg.getData().getString("error");
+	// Toast.makeText(DcpmObservationPointActivity.this, error, 1).show();
+	// break;
+	// }
+	// }
+	// super.handleMessage(msg);
+	// }
+	// };
+
+	/**
+	 * 创建菜单
+	 * 
+	 */
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		menu.add(0, ADD, 0, R.string.add).setIcon(
+				android.R.drawable.ic_menu_add);
+		return super.onCreateOptionsMenu(menu);
+
+	}
+
+	/**
+	 * 为菜单添加监听
+	 * 
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		switch (id) {
+		case ADD:
+			Intent intent = new Intent(DcpmObservationPointActivity.this,
+					ObservePointInfoTab.class);
+			gobal = (GobalApplication) DcpmObservationPointActivity.this
+					.getApplication();
+			Section section = new Section();
+			section.setWildNumber(getIntent().getStringExtra("wildNumber"));
+			gobal.setSection(section);
+			startActivity(intent);
+			return true;
+		}
+		return false;
+	}
+
+	class ItemClickListener implements OnItemClickListener {
+		@SuppressWarnings("unchecked")
+		public void onItemClick(AdapterView<?> arg0,// The AdapterView where the
+				// click happened
+				View arg1,// The view within the AdapterView that was clicked
+				int arg2,// The position of the view in the adapter
+				long arg3// The row id of the item that was clicked
+		) {
+
+			HashMap<String, Object> item = (HashMap<String, Object>) arg0
+					.getItemAtPosition(arg2);
+			Toast.makeText(DcpmObservationPointActivity.this, "" + arg2, 1000);
+
+		}
+
+	}
+
+	/**
+	 * 内部类：监听删除按钮
+	 * 
+	 */
+	class MyDelBtnListener extends MyListButtonOnClick {
+		@Override
+		public void onClick(View v) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(
+					DcpmObservationPointActivity.this);
+			builder.setTitle("删除").setMessage("确定要删除?").setCancelable(true)
+					.setPositiveButton("确定",
+							new DialogInterface.OnClickListener() {
+
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									Map<String, Object> item = (Map<String, Object>) list
+											.get(position);
+									new SectionDao(
+											DcpmObservationPointActivity.this)
+											.remove(Integer.parseInt(item
+													.get("id")
+													+ ""));
+									// 获取最新记录
+									sa.setData(getData());
+									Log.i("ddd", "" + list.size());
+									sa.notifyDataSetChanged();
+									Toast.makeText(
+											DcpmObservationPointActivity.this,
+											R.string.do_success, 2000).show();
+								}
+							}).setNegativeButton("取消",
+							new DialogInterface.OnClickListener() {
+
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									dialog.cancel();
+
+								}
+							}).show();
+
+		}
+
+	}
+
+	/**
+	 * 内部类：监听更新按钮
+	 * 
+	 */
+	class MyUpdateBtnListener extends MyListButtonOnClick {
+
+		@Override
+		public void onClick(View v) {
+			Intent intent = new Intent();
+			// Toast.makeText(DcpmObservationPointActivity.this, "现在暂时无法修改",
+			// 2000).show();
+			// mominglong 2.11 下午
+			intent.setClass(DcpmObservationPointActivity.this,
+					ObservePointInfoTab.class);
+			intent.putExtra("section", sectionDao.find(Integer.parseInt(list
+					.get(position).get("id")
+					+ "")));
+			startActivity(intent);
+
+		}
+
+	}
+
+	class MySubmitBtnListener extends MyListButtonOnClick {
+
+		@Override
+		public void onClick(View v) {
+			showDialog_Layout(DcpmObservationPointActivity.this);
+		}
+
+		private void showDialog_Layout(Context context) {
+			LayoutInflater inflater = LayoutInflater
+					.from(DcpmObservationPointActivity.this);
+			final View submitView = inflater.inflate(
+					R.layout.dcpm_observe_submit, null);
+			final TextView text = (TextView) submitView
+					.findViewById(R.id.dialogView);
+			final CheckBox submitData = (CheckBox) submitView
+					.findViewById(R.id.submitData);
+			final CheckBox submitPhoto = (CheckBox) submitView
+					.findViewById(R.id.submitPhoto);
+			final CheckBox submitVideo = (CheckBox) submitView
+					.findViewById(R.id.submitVideo);
+			// final ProgressBar pb = (ProgressBar)
+			// submitView.findViewById(R.id.down_pb);
+			// final TextView tv = (TextView)
+			// submitView.findViewById(R.id.subView);
+			final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+			builder.setCancelable(false);
+			builder.setIcon(R.drawable.icon);
+			builder.setTitle("请选择需要提交的数据:");
+			builder.setView(submitView);
+			int id = Integer.parseInt(list.get(position).get("id") + "");
+			SectionDao sectionDao = new SectionDao(
+					DcpmObservationPointActivity.this);
+			Section section = sectionDao.find(id);
+			Log.d("xx", "isdata" + section.getIsData() + "");
+			StringBuffer sb = new StringBuffer();
+
+			if (1 == section.getIsData()) {
+				sb.append("'数据'");
+			}
+			if (section.getIsPhoto() == 1) {
+				sb.append("'照片'");
+			}
+			if (section.getIsVideo() == 1) {
+				sb.append("'录像'");
+			}
+			sb.append(",已经上传!");
+			text.setText(sb);
+			if (section.getIsData() != 1 && section.getIsPhoto() != 1
+					&& section.getIsVideo() != 1)
+				text.setText("");
+
+			builder.setPositiveButton("提交",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							try {
+								Map<String, Object> item = (Map<String, Object>) list.get(position);
+								int id = Integer.parseInt(item.get("id")+ "");
+								SectionDao sectionDao = new SectionDao(
+										DcpmObservationPointActivity.this);
+								Section section = sectionDao.find(id);
+								if (submitData.isChecked()) {
+									HashMap filterMap = new HashMap();
+									filterMap.put("id", id + "");
+									ArrayList<HashMap<String, Object>> d = sectionDao
+											.getAllMapData(filterMap);
+									datas = d.get(0);
+								}
+								if (submitPhoto.isChecked()) {
+									Object o = data.get(position).get("img");
+									if (o != null) {
+										imgSrc = o.toString();
+									}
+								}
+								if (submitVideo.isChecked()) {
+									Object o = data.get(position).get("video");
+									if (o != null) {
+										videoSrc = o.toString();
+									}
+								}
+								if (datas != null) {
+									section.setIsData(1);
+								}
+								if (imgSrc != null) {
+									section.setIsPhoto(1);
+								}
+								if (videoSrc != null) {
+									section.setIsVideo(1);
+								}
+								 sectionDao.upDate(section);
+							} catch (Exception e1) {
+//								makeText(e1.getCause().getMessage(), 10);
+//								makeText(e1.getMessage(), 10);
+							}
+							try {
+								if (imgSrc != null) {
+									uploadFile(imgSrc);
+								}
+								if (videoSrc != null) {
+									uploadFile2(videoSrc);
+								}
+							} catch (ClientProtocolException e) {
+								makeText("网络故障请稍后再试", 2);
+							} catch (IOException e) {
+								makeText("网络故障请稍后再试", 2);
+							}
+
+							// new Thread(){
+							// public void run(){
+							// Log.i("xx", "test2");
+							// try {
+							// if(imgSrc!=null){
+							// // imgSrc = "/mnt/sdcard";
+							// uploadFile(imgSrc);
+							// }
+							// if(videoSrc!=null){
+							// uploadFile2(videoSrc);
+							// }
+							// } catch (ClientProtocolException e) {
+							// makeText("网络故障请稍后再试", 2);
+							// } catch (IOException e) {
+							// makeText("网络故障请稍后再试", 2);
+							// }
+							// }
+							// }.start();
+
+						}
+					});
+			builder.setNegativeButton("取消",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					});
+			builder.show();
+		}
+	}
+
+	public void uploadFile2(String name) throws IOException {
+		FormFile[] files = { new FormFile(name, new byte[8192], "file",
+				"application/octet-stream") };
+		String result = post(GrimpConstants.actionUrl, datas, files);
+
+	}
+
+	public void uploadFile(String name) throws IOException {
+		File[] fs = new File(name).listFiles(new FileFilter() {
+			@Override
+			public boolean accept(File pathname) {
+				if (pathname.isFile()) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		});
+		if (fs == null) {
+			return;
+		}
+		for (File file : fs) {
+			uploadFile2(file.getAbsolutePath());
+		}
+	}
+
+	//	
+	// private void sendMsg(int flag)
+	// {
+	// Message msg = new Message();
+	// msg.what = flag;
+	// handler.sendMessage(msg);
+	// }
+
+	public String post1(String actionUrl, Map<String, String> params,
+			FormFile[] files) {
+		try {
+			String BOUNDARY = "---------7d4a6d158c9"; // 数据分隔线
+			String MULTIPART_FORM_DATA = "multipart/form-data";
+			URL url = new URL(actionUrl);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoInput(true);// 允许输入
+			conn.setDoOutput(true);// 允许输出
+			conn.setUseCaches(false);// 不使用Cache
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Connection", "Keep-Alive");
+			conn.setRequestProperty("Charset", "UTF-8");
+			conn.setRequestProperty("Content-Type", MULTIPART_FORM_DATA
+					+ "; boundary=" + BOUNDARY);
+			StringBuilder sb = new StringBuilder();
+
+			// 上传的表单参数部分，格式请参考文章
+			for (Map.Entry<String, String> entry : params.entrySet()) {// 构建表单字段内容
+				sb.append("--");
+				sb.append(BOUNDARY);
+				sb.append("\r\n");
+				sb.append("Content-Disposition: form-data; name=\""
+						+ entry.getKey() + "\"\r\n\r\n");
+				sb.append(entry.getValue());
+				sb.append("\r\n");
+			}
+			DataOutputStream outStream = new DataOutputStream(conn
+					.getOutputStream());
+			System.out.println(outStream);
+			outStream.write(sb.toString().getBytes());// 发送表单字段数据
+
+			// 上传的文件部分，格式请参考文章
+			for (FormFile file : files) {
+				Log.i("xx", "files,size:" + files.length);
+				Log.i("xx", file.getFormname());
+				// File f = new
+				// File(android.os.Environment.getExternalStorageDirectory(),"1.jpg");
+				// fileSize =(int) f.length();
+				StringBuilder split = new StringBuilder();
+				split.append("--");
+				split.append(BOUNDARY);
+				split.append("\r\n");
+				split
+						.append("Content-Disposition: form-data;name=\""
+								+ file.getFormname()
+								+ "\";filename=\""
+								+ file.getFilname().substring(
+										file.getFilname().lastIndexOf(
+												File.separator) + 1) + "\"\r\n");
+				split.append("Content-Type: " + file.getContentType()
+						+ "\r\n\r\n");
+				outStream.write(split.toString().getBytes());
+				FileInputStream fis = new FileInputStream(file.getFilname());
+				int t = 0;
+				byte[] date = file.getData();
+				while ((t = fis.read(date)) != -1) {
+					outStream.write(file.getData(), 0, t);
+					// downLoadFileSize += t;
+					// sendMsg(1);//更新进度条
+				}
+				Log.d("xx", "xxxx");
+				outStream.write("\r\n".getBytes());
+			}
+			byte[] end_data = ("--" + BOUNDARY + "--\r\n").getBytes();// 数据结束标志
+			outStream.write(end_data);
+			outStream.flush();
+			// sendMsg(2);
+			int cah = conn.getResponseCode();
+			if (cah != 200)
+				throw new RuntimeException("请求url失败");
+			InputStream is = conn.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is, "utf-8");
+			BufferedReader br = new BufferedReader(isr);
+			String result = br.readLine();
+			outStream.close();
+			conn.disconnect();
+			makeText("上传成功", 2);
+			return result;
+		} catch (Exception e) {
+			makeText("网络故障请稍后再试", 2);
+			return "网络故障请稍后再试";
+//			throw new RuntimeException(e);
+		}
+	}
+
+	public String post(String actionUrl, HashMap<String, Object> params,
+			FormFile[] files) {
+		Map<String, String> map = new HashMap<String, String>();
+		if (params != null) {
+			Set<Map.Entry<String, Object>> set = params.entrySet();
+			for (Iterator<Map.Entry<String, Object>> it = set.iterator(); it
+					.hasNext();) {
+				Map.Entry<String, Object> entry = (Map.Entry<String, Object>) it
+						.next();
+				map.put(entry.getKey(), entry.getValue().toString());
+			}
+		}
+		return post1(actionUrl, map, files);
+	}
+
+	@Override
+	protected void onStart() {
+		// 刷新数据
+		sa.setData(getData());
+		sa.notifyDataSetChanged();
+		super.onStart();
+	}
+
+	public String convertDouble(String s) {
+		BigDecimal bigDecimal = new BigDecimal(s);
+		double b = bigDecimal.doubleValue();
+		int spend = bigDecimal.intValue();
+		int minute = new BigDecimal((b - spend) * 60).intValue();
+		int second = new BigDecimal(((b - spend) * 60 - minute) * 60)
+				.intValue();
+		if (minute < 0) {
+			BigDecimal minuteBigDecimal = new BigDecimal(minute);
+			minute = minuteBigDecimal.abs().intValue();
+			BigDecimal secondBigDecimal = new BigDecimal(second);
+			second = secondBigDecimal.abs().intValue();
+		}
+		return spend + "°" + minute + "'" + second + "″";
+	}
+
+}

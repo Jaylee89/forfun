@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<string name="fieldNumber">野外编号</string>
+	<string name="profileLength">剖面长度</string>
+	<string name="geologicalStructure">地质构造</string>
+	<string name="discoverer">发现者</string>
+	<string name="discoveryTime">发现时间</string>
+	<string name="conservationStatus">保护现状</string>
+	<string name="protectionRecommendations">保护建议</string>
+	<string name="developmentStatus">开发现状</string>
+	<string name="developmentProposal">开发建议</string>
+	<string name="level">级别</string>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- 观察点详细信息界面中添加数据写入 start -->
+	
+	<!-- 数据填写 start -->
+	<string name="pointNumber">点号:</string>
+	<string name="observeHighRange">观测高程:</string>
+	<string name="outcropLength">露头长度(m):</string>
+	<string name="outcropWidth">露头宽度(m2):</string>
+	<string name="exposureLength">出露长度(m):</string>
+	<string name="exposureThickness">出露厚度(m):</string>
+	<string name="exposureArea">出露面积(m2):</string>
+	<string name="occurrence">产状(°):</string> 
+	<string name="containMainFossil">所含主要化石</string> 
+	<string name="stratumCode">地层代号</string> 
+	<string name="lithology">岩性</string> 
+	<string name="surveyPersonnel">调查人员</string> 
+	
+	<!-- 地层代号下拉列表 start-->
+	<string name="stratumCodeShow">请选择下方地层代号</string>
+	<string-array name="stratumCodeArray">
+		<item>c2h</item>
+		<item>p11</item>
+	</string-array>
+	<!-- 地层代号下拉列表 end-->
+	
+	<!-- 岩性下拉列表 start -->
+	<string name="lithologyShow">请选择岩性</string>
+	<string-array name="lithologyArray">
+		<item>砂岩</item>
+		<item>泥岩</item>
+		<item>页岩</item>
+		<item>灰岩</item>
+	</string-array>
+	<!-- 岩性下拉列表 end -->
+	
+	<!-- 调查人员列表 start -->
+	<string name="surveyPersonnelShow">请选择调查人员名字</string>
+	<string-array name="surveyPersonnelArray">
+		<item>李刚</item>
+		<item>李庆华</item>
+		<item>潘代洪</item>
+		<item>刘刚</item>
+		<item>刘江</item>
+		<item>刘虎队</item>
+	</string-array>
+	<!-- 调查人员列表 end -->
+	
+	<!-- 数据填写 end -->
+	
+	<!-- 数据选择类 start -->
+	<string name="trafficCondition">交通状况</string>
+	<string name="excellent">极佳</string>
+	<string name="fine">良好</string>
+	<string name="ordinary">一般</string>
+	<string name="errand">差</string>
+	<string name="trafficConditionDescribe">交通状况描述</string>
+	<!-- 数据选择类 end -->
+	
+	<!-- 观察点详细信息界面中添加数据写入 end -->
+</resources>

@@ -1,0 +1,91 @@
+8
+
+dir
+9558
+svn://218.206.31.139/fbty/develop/projects/grimp/trunk/AndroidGrimp1.0
+svn://218.206.31.139
+
+
+
+2011-02-12T02:29:33.282535Z
+9558
+zhoulei
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e7075f58-a85f-f344-b845-feb1385c381f
+
+default.properties
+file
+
+
+
+
+2011-01-27T10:08:50.703125Z
+8d79ea50b3b4eb3970a455abbc97b61a
+2011-01-25T02:39:23.258625Z
+9217
+liyun
+
+.classpath
+file
+
+
+
+
+2011-01-28T00:57:28.640625Z
+f44d68f83324ac05c25a5c1e7092fe0a
+2011-01-27T04:39:43.961750Z
+9311
+zhoulei
+
+assets
+dir
+
+.project
+file
+
+
+
+
+2011-01-25T03:13:33.890625Z
+4c321fdf32ea38226d2a26d6cb3e8a17
+2011-01-25T02:39:23.258625Z
+9217
+liyun
+
+AndroidManifest.xml
+file
+10456
+
+
+
+2011-03-02T06:05:12.671875Z
+4879f90a2163911af1db23bbabd562ec
+2011-03-02T06:04:56.809375Z
+10456
+lvbingfeng
+
+src
+dir
+
+bin
+dir
+
+gen
+dir
+
+res
+dir
+

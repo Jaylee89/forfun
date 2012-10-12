@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:scrollbars="vertical">
+	<!-- 数据填写 -->
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:orientation="horizontal"
+	    android:background="@drawable/tianxie"
+	    android:padding="20dp">
+
+		<TableLayout android:id="@+id/tableLayout1"
+			android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<TableRow>
+				<TextView android:id="@+id/pointNumberTextView"
+					android:text="@string/pointNumber"
+					android:gravity="left" android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<EditText android:id="@+id/pointNumberEditText"
+					android:layout_width="400px" android:layout_height="fill_parent"
+					android:singleLine="false" android:scrollbars="vertical" />
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/observeHighRangeTextView"
+					android:text="@string/observeHighRange" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<EditText android:id="@+id/observeHighRangeEditText"
+					android:layout_width="400px" android:layout_height="fill_parent" />
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/outcropLengthTextView"
+					android:text="@string/outcropLength" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<EditText android:id="@+id/outcropLengthEditText"
+					android:layout_width="400px" android:layout_height="fill_parent" />
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/outcropWidthTextView"
+					android:text="@string/outcropWidth" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<EditText android:id="@+id/outcropWidthEditText"
+					android:layout_width="400px" android:layout_height="fill_parent" />
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/exposureLengthTextView"
+					android:text="@string/exposureLength" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<EditText android:id="@+id/exposureLengthEditText"
+					android:layout_width="400px" android:layout_height="fill_parent" />
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/exposureThicknessTextView"
+					android:text="@string/exposureThickness" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<EditText android:id="@+id/exposureThicknessEditText"
+					android:layout_width="400px" android:layout_height="fill_parent" />
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/exposureAreaTextView"
+					android:text="@string/exposureArea" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<EditText android:id="@+id/exposureAreaEditText"
+					android:layout_width="400px" android:layout_height="fill_parent" />
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/occurrenceTextView"
+					android:text="@string/occurrence" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<EditText android:id="@+id/occurrenceEditText"
+					android:layout_width="400px" android:layout_height="fill_parent" />
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/containMainFossilTextView"
+					android:text="@string/containMainFossil" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<EditText android:id="@+id/containMainFossilEditText"
+					android:layout_width="400px" android:layout_height="fill_parent" />
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/stratumCodeTextView"
+					android:text="@string/stratumCode" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<Spinner android:id="@+id/stratumCodeSpinner"
+					android:layout_width="400px" android:layout_height="fill_parent"
+					android:prompt="@string/stratumCodeShow" android:entries="@array/stratumCodeArray">
+				</Spinner>
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/lithologyTextView" android:text="@string/lithology"
+					android:gravity="left" android:textSize="25px"
+					android:layout_width="200px" android:layout_height="fill_parent" />
+				<Spinner android:id="@+id/lithologySpinner"
+					android:layout_width="400px" android:layout_height="fill_parent"
+					android:prompt="@string/lithologyShow" android:entries="@array/lithologyArray">
+				</Spinner>
+			</TableRow>
+
+			<TableRow>
+				<TextView android:id="@+id/surveyPersonnelTextView"
+					android:text="@string/surveyPersonnel" android:gravity="left"
+					android:textSize="25px" android:layout_width="200px"
+					android:layout_height="fill_parent" />
+				<Spinner android:id="@+id/surveyPersonnelSpinner"
+					android:layout_width="400px" android:layout_height="fill_parent"
+					android:prompt="@string/surveyPersonnelShow" android:entries="@array/surveyPersonnelArray">
+				</Spinner>
+			</TableRow>
+			<!--
+				<TableRow> <Button android:id="@+id/dataWriter_confirm"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_gravity="right"
+				android:text="确认" /> <Button android:id="@+id/dataWriter_cancel"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_gravity="left"
+				android:text="取消" /> </TableRow>
+			-->
+		</TableLayout>
+	</LinearLayout>
+</ScrollView>
+

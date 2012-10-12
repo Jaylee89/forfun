@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">地质遗迹野外工作</string>
+	<string name="hello">你好</string>
+	<string name="dic">地区选择</string>
+	<string name="planet_prompt">请选择</string>
+
+	<!-- 主菜单 -->
+	<string name="poumian">地层剖面</string>
+	<string name="dizhi">地质构造</string>
+	<string name="dimao">地貌景观</string>
+	<string name="gushengwu">古生物</string>
+	<string name="kuangshi">矿石及观赏石</string>
+	<string name="shuiti">水体景观</string>
+	<string name="huanjing">环境地质遗迹</string>
+	<string name="help">帮助</string>
+	<string name="back">返回</string>
+
+	<!-- 地层剖面信息录入 -->
+	<string name="dcpm_logo">地层剖面</string>
+	<string name="dcpm_info">地层剖面信息</string>
+	<string-array name="dcpm_item_parent">
+		<item>\u0020\u0020\u0020\u0020地层剖面信息录入</item>
+		<item>\u0020\u0020\u0020\u0020沉积岩相剖面信息录入</item>
+	</string-array>
+	<string-array name="dcpm_item_child1">
+		<item>\u0020\u0020全国性标准剖面</item>
+		<item>\u0020\u0020区域性标准剖面</item>
+		<item>\u0020\u0020地方性标准剖面</item>
+	</string-array>
+	<string-array name="dcpm_item_child2">
+		<item>\u0020\u0020典型沉积岩相剖面</item>
+	</string-array>
+
+	<!-- 地貌景观信息录入 -->
+	<string name="dmjg_logo">地貌景观</string>
+	<string name="dmjg_info">地貌景观信息</string>
+	<string-array name="dmjg_item_parent">
+		<item>  岩石地貌信息录入</item>
+		<item>  构造地貌信息录入</item>
+		<item>  流水地貌信息录入</item>
+		<item>  冰川地貌信息录入</item>
+	</string-array>
+	<string-array name="dmjg_item_child1">
+		<item>  岩溶地貌</item>
+		<item>  碎屑岩地貌</item>
+	</string-array>
+	<string-array name="dmjg_item_child2">
+		<item>  构造面地貌</item>
+	</string-array>
+	<string-array name="dmjg_item_child3">
+		<item>  流水侵蚀地貌</item>
+		<item>  流水堆积地貌</item>
+		<item>  流水复合地貌</item>
+	</string-array>
+
+	<string-array name="dmjg_item_child4">
+		<item>  冰蚀地貌</item>
+		<item>  冰碛地貌</item>
+		<item>  冰缘地貌</item>
+	</string-array>
+
+	<string-array name="dmjg_item_grandson1_1">
+		<item>  地表溶岩地貌</item>
+		<item>  地下溶岩地貌</item>
+	</string-array>
+
+	<string-array name="dmjg_item_grandson1_2">
+		<item>  碎屑岩地貌</item>
+	</string-array>
+
+	<string-array name="dmjg_item_grandson2_1">
+		<item>  单面山</item>
+		<item>  断层崖</item>
+		<item>  断层三角面</item>
+		<item>  断块山</item>
+		<item>  褶皱山</item>
+	</string-array>
+
+	<string-array name="dmjg_item_grandson3_1">
+		<item>  河谷地貌</item>
+	</string-array>
+
+	<string-array name="dmjg_item_grandson3_2">
+		<item>  河床地貌</item>
+	</string-array>
+
+	<string-array name="dmjg_item_grandson3_3">
+		<item>  流水复合地貌</item>
+	</string-array>
+
+	<string-array name="dmjg_item_grandson4_1">
+		<item>  山岳冰川地貌</item>
+		<item>  断大陆冰盖地貌</item>
+	</string-array>
+
+	<string-array name="dmjg_item_grandson4_2">
+		<item>  冰川堆积地貌</item>
+		<item>  冰川沉积地貌</item>
+	</string-array>
+
+	<string-array name="dmjg_item_grandson4_3">
+		<item>  冰缘地貌</item>
+	</string-array>
+
+
+
+
+	<!-- 地质构造 -->
+	<string name="dzgz_logo">地质构造</string>
+	<string name="dzgz_info">地质构造信息</string>
+
+	<string-array name="dzgz_item_parent">
+		<item>  中小型构造录入</item>
+		<item>  大型构造信息录入</item>
+	</string-array>
+
+	<string-array name="dzgz_item_child1">
+		<item>  断层</item>
+		<item>  褶皱</item>
+	</string-array>
+
+	<string-array name="dzgz_item_child2">
+		<item>  断层</item>
+		<item>  褶皱</item>
+	</string-array>
+
+	<!-- 古生物 -->
+	<string name="gsw_logo">古生物</string>
+	<string name="gsw_info">古生物信息</string>
+
+	<!-- 矿石及观赏石 -->
+	<string name="ksgs_logo">矿石及观赏石</string>
+	<string name="ksgs_info">矿石及观赏石信息</string>
+
+	<string-array name="ksgs_item_parent">
+		<item>  重要矿物信息</item>
+		<item>  典型矿床信息</item>
+		<item>  观赏石信息</item>
+	</string-array>
+
+	<string-array name="ksgs_item_child1">
+		<item>  金属矿物信息</item>
+		<item>  非金属矿物信息</item>
+	</string-array>
+
+	<string-array name="ksgs_item_child2">
+		<item>  金属矿床信息</item>
+		<item>  非金属矿床信息</item>
+		<item>  能源矿床信息</item>
+	</string-array>
+
+	<string-array name="ksgs_item_child3">
+		<item>  观赏石信息</item>
+	</string-array>
+
+
+
+	<!-- 水体景观信息 -->
+	<string name="stjg_logo">水体景观</string>
+	<string name="stjg_info">水体景观信息录入</string>
+
+	<string-array name="stjg_item_parent">
+		<item>  温泉景观信息录入</item>
+		<item>  湖沼景观信息录入</item>
+		<item>  河流景观信息录入</item>
+		<item>  瀑布景观信息录入</item>
+	</string-array>
+
+	<string-array name="stjg_item_child1">
+		<item>  温泉</item>
+		<item>  冷泉</item>
+	</string-array>
+
+
+	<string-array name="stjg_item_child2">
+		<item>  湖泊景观</item>
+		<item>  沼泽景观</item>
+	</string-array>
+
+
+
+
+	<string-array name="stjg_item_child3">
+		<item>  风景河段</item>
+	</string-array>
+
+	<string-array name="stjg_item_child4">
+		<item>  瀑布景观</item>
+	</string-array>
+
+	<string-array name="stjg_item_grandson1_1">
+		<item>  温泉</item>
+		<item>  热泉</item>
+		<item>  沸泉</item>
+		<item>  气泉</item>
+		<item>  热间歇泉</item>
+	</string-array>
+
+	<string-array name="stjg_item_grandson1_2">
+		<item>  上涌泉</item>
+		<item>  下涌泉</item>
+		<item>  冷间歇泉</item>
+	</string-array>
+
+	<string-array name="stjg_item_grandson2_1">
+		<item>  断陷湖</item>
+		<item>  堰塞湖</item>
+		<item>  冰川湖</item>
+		<item>  风蚀湖</item>
+		<item>  牛。</item>
+		<item>  泻湖</item>
+	</string-array>
+
+	<string-array name="stjg_item_grandson2_2">
+		<item>  低位(草甸)沼泽</item>
+		<item>  中位(过渡,森林)沼泽</item>
+		<item>  高位(泥炭,苔藓)沼泽</item>
+		<item>  湿地</item>
+	</string-array>
+
+	<string-array name="stjg_item_grandson3_1">
+		<item>  漂流河段</item>
+	</string-array>
+
+	<string-array name="stjg_item_grandson4_1">
+		<item>  山岳型瀑布</item>
+		<item>  河道型瀑布</item>
+	</string-array>
+
+	<!-- 环境地质遗迹信息 -->
+	<string name="hjdz_logo">环境地质遗迹</string>
+	<string name="hjdz_info">环境地质遗迹信息</string>
+
+	<string-array name="hjdz_item_parent">
+		<item>  地震遗迹</item>
+		<item>  灾变遗迹</item>
+	</string-array>
+
+	<string-array name="hjdz_item_child1">
+		<item>  古地震遗迹</item>
+		<item>  地震遗迹</item>
+	</string-array>
+
+	<string-array name="hjdz_item_child2">
+		<item>  山体崩塌</item>
+		<item>  滑坡</item>
+		<item>  泥石流</item>
+		<item>  地裂与地面沉降</item>
+	</string-array>
+
+	<string-array name="hjdz_item_grandson1_1">
+		<item>  地裂层</item>
+		<item>  断层坎</item>
+		<item>  地震滑坡</item>
+	</string-array>
+
+	<string-array name="hjdz_item_grandson1_2">
+		<item>  地裂层</item>
+		<item>  断层</item>
+		<item>  碎屑流</item>
+		<item>  地鼓包</item>
+		<item>  地震废墟</item>
+	</string-array>
+
+	<string-array name="hjdz_item_grandson2_1">
+		<item>  倒推石</item>
+		<item>  崩塌堆积洞</item>
+		<item>  崩塌悬崖</item>
+	</string-array>
+
+	<string-array name="hjdz_item_grandson2_2">
+		<item>  滑坡体</item>
+		<item>  滑坡壁</item>
+		<item>  滑动面</item>
+		<item>  醉汉林</item>
+	</string-array>
+
+	<string-array name="hjdz_item_grandson2_3">
+		<item>  泥石流源</item>
+		<item>  泥石流扇</item>
+		<item>  泥石流岗</item>
+	</string-array>
+
+	<string-array name="hjdz_item_grandson2_4">
+		<item>  地裂与地面沉降</item>
+	</string-array>
+
+
+	<!-- 信息选择  start-->
+	<string name="nature">自然环境状况</string>
+	<string name="physiographiccondition">自然地理条件:</string>
+	<string name="valuing">评价内容:</string>
+	<string name="defaultvalue">根据优美性、和谐性、稳定生态平衡作用进行描述</string>
+
+	<string name="tourismseasonally">旅游季节性:</string>
+	<string name="defaultvalue1">根据季节与气候变化对旅游的影响进行描述</string>
+
+	<string name="envquality">环境质量:</string>
+	<string name="defaultvalue2">根据环境的污染状况进行描述</string>
+
+	<string name="vulnerability">脆弱性:</string>
+	<string name="defaultvalue3">根据抗破坏的能力进行描述</string>
+
+	<string name="safety">安全性:</string>
+	<string name="defaultvalue4">根据旅游及交通安全进行描述</string>
+
+
+	<string name="scientific">科学价值</string>
+	<string name="scientificvalue">科学研究价值:</string>
+	<string name="defaultvalue5">根据在地球科学领域的地位进行描述</string>
+
+	<string name="ssvalue">科教与科普价值:</string>
+	<string name="defaultvalue6">根据在地学教育和普及的程度及潜力进行描述</string>
+
+	<string name="typicality">典型性:</string>
+	<string name="defaultvalue7">根据重大地质过程记录的特征进行描述</string>
+
+	<string name="rarity">稀有性:</string>
+	<string name="defaultvalue8">根据稀有性、独特性、新奇性进行描述</string>
+
+	<string name="integrity">完整性:</string>
+	<string name="defaultvalue9">根据完整度、系统性进行描述</string>
+
+	<string name="resource">资源容量:</string>
+	<string name="defaultvalue10">根据容纳游人、设施极限和游览时限进行描述</string>
+
+
+	<string name="aesthetic">美学价值</string>
+	<string name="imagevalue">形象美:</string>
+	<string name="defaultvalue11">根据雄、奇、险、幽、旷、秀特点进行描述</string>
+
+	<string name="colour">色彩美:</string>
+	<string name="defaultvalue12">根据色彩艳丽、搭配协调进行描述</string>
+
+	<string name="dynamic">动态美:</string>
+	<string name="defaultvalue13">根据水体景观的韵律进行描述</string>
+
+	<string name="cheerful">愉悦美:</string>
+	<string name="defaultvalue14">根据让人的心情轻松、喜悦的程度进行描述</string>
+
+	<string name="vagary">奇特性和奇异性:</string>
+	<string name="defaultvalue15">根据造型怪诞、惊艳进行描述</string>
+
+	<string name="ressize">资源规模和组合:</string>
+	<string name="defaultvalue16">根据资源形态或景区面积大小；密度、配套和协调性进行描述</string>
+
+	<string name="datasourse">资料来源</string>
+	<string name="publication">出版的刊物</string>
+	<string name="areareport">区调报告</string>
+	<string name="researchreport">科研报告</string>
+	<string name="treatise">专著</string>
+	<string name="thesis">论文</string>
+	<string name="actualmea">实测</string>
+	<string name="sketchsuivey">草测</string>
+	<string name="easymea">简测</string>
+	<string name="other">其他</string>
+
+	<!-- 信息选择  end -->
+
+	<!-- 数据填写 start -->
+	<string name="data_fill">数据填写</string>
+
+	<!-- 数据填写 end -->
+	
+	<!-- 提交数据 start -->
+	<string name="submitData">数据</string>
+	<string name="submitPhoto">照片</string>
+	<string name="submitVideo">录像</string>
+	
+	<!-- 提交数据 end -->
+	
+	<string name="home">主页</string>
+	<string name="back_old">返回</string>
+	<string name="add_new">创建</string>
+	<string name="refresh">刷新</string>
+	<string name="close">退出</string>
+	<string name="set">设置</string>
+</resources>
+
+
+

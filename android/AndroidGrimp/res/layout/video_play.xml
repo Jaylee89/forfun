@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!-- 视频播放 -->
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+>
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<VideoView android:id="@+id/videoview" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:layout_centerInParent="true" />
+	
+</LinearLayout>
+<ImageView
+		android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:src="@drawable/close_state"
+		android:id="@+id/close_video"
+	></ImageView>
+</RelativeLayout>

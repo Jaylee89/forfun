@@ -1,0 +1,333 @@
+package com.fbty.androidgrimp.dcpm;  
+import java.io.File;
+import java.io.FileFilter;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.Gallery;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Gallery.LayoutParams;
+import android.widget.ViewSwitcher.ViewFactory;
+
+import com.fbty.androidgrimp.R;
+import com.fbty.androidgrimp.domain.Section;
+import com.fbty.androidgrimp.util.GobalApplication;
+import com.fbty.base.activity.BaseActivity;
+public class CapActivity extends BaseActivity implements ViewFactory {  
+    private Gallery gallery;  
+    /**从sd卡中读取的原始图片*/
+    private  File[] imgFileList = null;         
+    /**原始图片压缩后用于显示的图片*/
+    private ArrayList<Drawable> imgDrableList = new ArrayList<Drawable>();
+    private Button button ;//加载相机
+    private String strImgPath;
+    /**照片文件夹*/
+    private String img;
+    private Section section;
+    private ImageAdapter imageAdapter;
+//    private Bundle testBundle;
+    @Override  
+    public void onCreate(Bundle savedInstanceState) {  
+//    	testBundle = savedInstanceState;
+        // TODO Auto-generated method stub  
+        super.onCreate(savedInstanceState);  
+        setContentView(R.layout.cap); 
+        Intent intent = getIntent();
+        Section s = (Section) intent.getSerializableExtra("section");
+        if(s!=null&&s.getImg()!=null){
+        	img = s.getImg();
+        }else{
+        	img = Environment.getExternalStorageDirectory().toString()+
+			"/grimp/img/dcpm_"+new SimpleDateFormat("yyyyMMddhhmmss").format(new Date())+"/";
+        }
+        button = (Button) findViewById(R.id.lzhaoxiang);
+        button.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent imageCaptureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())+ ".jpg";//照片命名 
+				File out = new File(img);
+				if (!out.exists()) {
+					out.mkdirs();
+				}
+				out = new File(img, fileName);
+				strImgPath = img + fileName;//该照片的绝对路径
+				Uri uri = Uri.fromFile(out);
+				imageCaptureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+				imageCaptureIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+				startActivityForResult(imageCaptureIntent, 1);
+				
+			}
+		});
+  
+        gallery = (Gallery) findViewById(R.id.gallery);  
+        listImage();
+        imageAdapter = new ImageAdapter(this);
+        gallery.setAdapter(imageAdapter);
+        gallery.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				showDialog_Layout(position);
+				return true;
+			}
+        	
+		});
+    }
+    public void listImage(){
+    	File sdcard = new File(img);
+		imgFileList = sdcard.listFiles(new FileFilter() {
+			public boolean accept(File arg0) {
+				String fileName = arg0.getName();
+				String ex = arg0.getName().substring(
+						fileName.lastIndexOf(".") + 1,
+						fileName.length()).toLowerCase();
+				if (ex == null || ex.length() == 0) {
+					return false;
+				} else {
+					if (ex.equals("jpeg") || ex.equals("jpg")
+							|| ex.equals("bmp") || ex.equals("png")) {
+						return true;
+					}
+					return false;
+				}
+			}
+		});
+		
+		int imgListSize = 0;
+		if(imgFileList !=null){
+			 imgListSize = imgFileList.length;
+		}
+	
+		if (imgFileList == null || imgListSize == 0) {
+			Toast.makeText(CapActivity.this, "该观测点没有照片",4).show();
+			imgDrableList = new ArrayList<Drawable>(0);
+			return;
+		}else{
+			Toast.makeText(CapActivity.this, "该观测点有"+imgListSize+"张照片" ,4).show();
+			
+		}
+		
+		//压缩原始文件
+		File  imgFile = null;
+		imgDrableList = new ArrayList<Drawable>();
+		for (int i = 0; i < imgListSize ; i++) {
+			imgFile = imgFileList[i];
+			BitmapFactory.Options options = new BitmapFactory.Options();
+	        options.inJustDecodeBounds = false;
+	        Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getPath(), options);
+	        // 获取这个图片的宽和高
+	        options.inJustDecodeBounds = true;
+	        bitmap = BitmapFactory.decodeFile(imgFile.getPath(), options); //此时返回bm为空
+	        options.inJustDecodeBounds = false;
+	         //计算缩放比
+	        int be = (int)(options.outHeight / (float)350);
+	        if (be <= 0)
+	            be = 1;
+	        options.inSampleSize = be;
+	        //重新读入图片，注意这次要把options.inJustDecodeBounds 设为 false哦
+	        bitmap=BitmapFactory.decodeFile(imgFile.getPath(),options);
+	        imgDrableList.add(new BitmapDrawable(bitmap));
+	       
+		}
+		
+		
+          
+    }
+    @Override  
+    public View makeView() {  
+        ImageView i = new ImageView(this);  
+        i.setBackgroundColor(0xFF000000);  
+        i.setScaleType(ImageView.ScaleType.CENTER);//居中  
+        i.setLayoutParams(new ImageSwitcher.LayoutParams(//自适应图片大小  
+                LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));  
+        return i;  
+    }  
+     class ImageAdapter extends BaseAdapter { 
+        private Context mContext;  
+        public ImageAdapter(Context c) {  
+            mContext = c;  
+        }  
+        public int getCount() {  
+        	return imgDrableList.size();  
+//            return  Integer.MAX_VALUE;   //返回一个很大的数,实现循环  
+        }  
+        public Object getItem(int position) {  
+            return position;  
+        }  
+        public long getItemId(int position) {  
+            return position;  
+        }  
+        public View getView(final int position, View convertView, ViewGroup parent) {  
+            ImageView i = new ImageView(mContext);  
+            i.setImageDrawable(imgDrableList.get(position));  
+//            i.setImageDrawable(imgDrableList.get(position%imgDrableList.size())); //取余  
+            i.setAdjustViewBounds(true);  
+            i.setLayoutParams(new Gallery.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            i.setScaleType(ImageView.ScaleType.FIT_CENTER);
+//            i.setBackgroundResource(); 设置背景 
+           /* i.setOnLongClickListener(new View.OnLongClickListener() {
+				
+				@Override
+				public boolean onLongClick(View v) {
+					showDialog_Layout(position);
+//					showDialog_Layout(position%imgDrableList.size());
+					return false;
+				}
+			});*/
+            return i;  
+        }
+ 
+    }  
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	
+    	switch (requestCode) {
+		case 1:
+			if (resultCode==Activity.RESULT_OK) {
+				listImage();
+		        //刷新适配器
+		        imageAdapter.notifyDataSetChanged();
+			}
+			break;
+		}
+    	super.onActivityResult(requestCode, resultCode, data);
+    }
+    
+	/**
+	 * @see android.app.Activity#onPause()
+	 */
+	@Override
+	protected void onPause() {
+		gobal =(GobalApplication)this.getApplication();
+		section = gobal.getSection();
+		save();
+		gobal.setSection(section);
+		super.onPause();
+	}
+	/**
+	 * 保存数据
+	 */
+	public void save() {
+		if(section!=null){
+			section.setImg(img);
+		}
+	}
+	/**
+	 * 设置图片到指定大小
+	 * @return
+	 */
+	protected Bitmap scaleImg(Bitmap bm, int newWidth, int newHeight) {
+	    // 图片源
+	    // Bitmap bm = BitmapFactory.decodeStream(getResources()
+	    // .openRawResource(id));
+	    // 获得图片的宽高
+	    int width = bm.getWidth();
+	    int height = bm.getHeight();
+	    // 设置想要的大小
+	    int newWidth1 = newWidth;
+	    int newHeight1 = newHeight;
+	    // 计算缩放比例
+	    float scaleWidth = ((float) newWidth1) / width;
+	    float scaleHeight = ((float) newHeight1) / height;
+	    // 取得想要缩放的matrix参数
+	    Matrix matrix = new Matrix();
+	    matrix.postScale(scaleWidth, scaleHeight);
+	    // 得到新的图片
+	    Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix,
+	      true);
+	    return newbm;
+
+	   }
+
+	//显示基于Layout的AlertDialog  
+    private void showDialog_Layout(final int position) {  
+        final AlertDialog.Builder builder = new AlertDialog.Builder(CapActivity.this);  
+        builder.setCancelable(false);  
+//        builder.setIcon(R.drawable.icon);  
+        builder.setTitle("选项");  
+        builder.setPositiveButton("原图",  
+                new DialogInterface.OnClickListener() {  
+                    public void onClick(DialogInterface dialog, int whichButton) { 
+    	            	Bitmap bitmap = null;
+						try {
+							File imgFile = imgFileList[position];
+							BitmapFactory.Options options = new BitmapFactory.Options();
+							options.inJustDecodeBounds = false;
+							bitmap = BitmapFactory.decodeFile(imgFile.getPath(), options);
+						} catch (Exception e) {
+							Toast.makeText(CapActivity.this, "原文件损坏或已不存在", 3).show();
+						}
+    	            	GobalApplication gobal = (GobalApplication) CapActivity.this.getApplication();
+    	            	gobal.setBitmap(bitmap);
+    	            	Intent mIntent = new Intent(CapActivity.this,CapPictureActivity.class);
+    	            	startActivity(mIntent);
+                    }  
+                });  
+        builder.setNeutralButton("删除", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				imgFileList[position].delete();
+				Toast.makeText(CapActivity.this, "删除成功", 3).show();
+				//刷新适配器
+				listImage();
+		        imageAdapter.notifyDataSetChanged();
+//				onRestart();
+			}
+		});
+        builder.setNegativeButton("返回",  
+                new DialogInterface.OnClickListener() {  
+                    public void onClick(DialogInterface dialog, int whichButton) {  
+                    }  
+                });  
+        builder.show();  
+    }
+	/**
+	 * @see android.app.Activity#onResume()
+	 */
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}  
+    
+//    @Override
+//    protected void onStart() {
+//		listImage();
+//        imageAdapter.notifyDataSetChanged();
+//    	super.onStart();
+//    }
+//    
+//    @Override
+//    protected void onRestart() {
+//    	onCreate(testBundle);
+//    	super.onRestart();
+//    }
+
+}  
