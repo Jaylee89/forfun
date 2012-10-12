@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="assets/gson-1.6.jar"/>
+	<classpathentry kind="lib" path="assets/commons-beanutils-1.6.1.jar" sourcepath="E:/我的仓库/我的类库/open source/commons/commons-beanutils-1.6.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

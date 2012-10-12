@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"  
+	android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"
+        android:background="@drawable/back"
+    
+>
+
+<HorizontalScrollView
+	android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"	
+    android:scrollbars="vertical|horizontal"
+   	>
+<LinearLayout
+    android:layout_width="wrap_content"  
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    >  
+ 	<TableLayout 
+ 		android:id="@+id/list_table"
+ 		android:layout_width="wrap_content"  
+    	android:layout_height="wrap_content"
+			>
+			<TableRow
+				android:background="#20A5A5A5" 
+			> 
+			
+			<TextView
+				android:text="@string/down_pici"
+			   android:textColor="@color/black"
+			   android:width="150dp"
+			   android:layout_margin="1dp"
+			   android:background="#60aeebee"
+			   android:gravity="center"
+			   >
+			   </TextView>
+			
+			<TextView
+				
+				android:text="@string/down_area"
+				android:background="#60aeebee"
+				android:gravity="center"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+			></TextView>
+			<TextView
+				
+				android:text="@string/down_person"
+				android:background="#60aeebee"
+				android:textColor="@color/black"
+				android:width="150dp"
+				 android:layout_margin="1dp"
+				  android:gravity="center"
+			></TextView>
+			<TextView
+				
+				android:text="@string/down_date"
+				android:background="#60aeebee"
+				android:textColor="@color/black"
+				android:width="150dp"
+				 android:layout_margin="1dp"
+				  android:gravity="center"
+			></TextView>
+			<TextView
+				
+				android:text="@string/down_tiaoshu"
+				android:background="#60aeebee"
+				android:textColor="@color/black"
+				android:width="150dp"
+				 android:layout_margin="1dp"
+				  android:gravity="center"
+			></TextView>
+			<TextView
+				android:text="@string/down_back"
+				android:background="#60aeebee"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+				android:gravity="center"
+			></TextView>
+			<TextView
+				android:text="@string/down_need_back"
+				android:background="#60aeebee"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+				android:gravity="center"
+			></TextView>
+			<TextView
+				android:text="@string/down_context"
+				android:background="#60aeebee"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+				android:gravity="center"
+			></TextView>
+			<TextView
+				android:text="@string/down_rate"
+				android:background="#60aeebee"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+				android:gravity="center"
+			></TextView>
+			</TableRow>
+	
+</TableLayout>
+	<ListView
+		android:id="@+id/downDataList"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBottom="@id/list_table"
+		android:cacheColorHint="#00000000"
+		android:fastScrollEnabled="true"
+		android:focusable="true"
+		android:scrollbars="vertical"
+	></ListView> 
+
+</LinearLayout>
+</HorizontalScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"  
+	android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"	
+    android:background="@drawable/back"
+    
+>	
+	<TableLayout
+		android:layout_width="fill_parent"  
+    	android:layout_height="fill_parent"	
+		>
+		<TableRow>
+		<ListView
+		android:layout_margin="10dp"
+		android:padding="10dp"
+		android:id="@+id/conditionTree"
+		android:layout_height="fill_parent"
+		android:layout_weight="0.5"
+		android:cacheColorHint="#00000000"
+		android:fastScrollEnabled="true"
+		android:background="#70000000"
+		/>
+		
+		<ListView
+		android:layout_margin="10dp"
+		android:padding="10dp"
+		android:id="@+id/position_list"
+		android:layout_height="wrap_content"
+		android:layout_weight="0.5"
+		android:cacheColorHint="#00000000"
+		android:fastScrollEnabled="true"
+		android:background="#70000000"
+		/>
+	</TableRow>
+	</TableLayout>
+
+	
+</RelativeLayout>

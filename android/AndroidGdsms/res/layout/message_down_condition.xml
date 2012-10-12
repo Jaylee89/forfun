@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"  
+	android:orientation="vertical"
+	android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"	
+    android:background="@drawable/back"
+>	
+	<TableLayout
+		android:layout_width="fill_parent"  
+    	android:layout_height="fill_parent"	
+		>
+		<TableRow>
+		<ListView
+		android:layout_margin="10dp"
+		android:padding="10dp"
+		android:id="@+id/conditionTree"
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent"
+		android:layout_weight="0.5"
+		android:cacheColorHint="#00000000"
+		android:background="#70000000"
+		/>
+		<LinearLayout
+		android:layout_margin="10dp"
+		android:id="@+id/position_list"
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent"
+		android:layout_weight="0.5"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:cacheColorHint="#00000000"
+		android:background="#70000000"
+		android:padding="10dp"
+		>
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/down_person"
+				></TextView>
+				<EditText
+					android:id="@+id/down_person_name"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+				></EditText>
+		
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="开始时间"
+				
+				></TextView>
+				<EditText
+					android:id="@+id/down_start_date"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					
+					android:editable="false"
+				></EditText>
+		
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="结束时间"
+					
+				></TextView>
+				<EditText
+					android:id="@+id/down_end_date"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:editable="false"
+				></EditText>
+			
+		</LinearLayout>
+	</TableRow>
+	</TableLayout>
+
+	
+</LinearLayout>

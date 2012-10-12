@@ -1,0 +1,88 @@
+		<LinearLayout android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android" 
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:padding="20px" 
+			android:background="@drawable/back">
+			<LinearLayout android:orientation="vertical"
+						android:layout_width="fill_parent" 
+						android:layout_height="fill_parent"
+				 		android:gravity="center">
+				<!-- 表格布局 -->
+				<TableLayout android:orientation="vertical"
+					android:layout_width="fill_parent" android:layout_height="wrap_content">
+					<TableRow>
+					<LinearLayout
+						android:layout_width="fill_parent" 
+						android:layout_height="fill_parent"
+						android:orientation="horizontal"
+						>
+    					<TextView
+    						android:layout_width="wrap_content"    
+    						android:layout_height="fill_parent"
+    						android:textSize="25px"    
+   							android:text="是否回执"> 
+    					</TextView>
+   		 				</LinearLayout>
+   		 				<LinearLayout
+							android:layout_width="fill_parent" 
+							android:layout_height="fill_parent"
+							android:orientation="horizontal"
+						>
+ 						<RadioGroup   
+   	 						android:id="@+id/genderGroup"
+   	 						android:orientation="horizontal"
+    						android:layout_width="wrap_content"    
+          	 				android:layout_height="fill_parent"> 
+    						<RadioButton   
+       	 						android:id="@+id/yesRdobtn"  
+        						android:layout_width="wrap_content"    
+        						android:layout_height="wrap_content"    
+        						android:text="是"  
+       		 				/>   
+    						<RadioButton   
+        						android:id="@+id/noRdobtn"  
+       	 						android:layout_width="wrap_content"    
+        						android:layout_height="wrap_content"    
+        						android:text="否"  
+        					/>
+   		 				</RadioGroup> 
+   		 				<TextView
+    						android:layout_width="wrap_content"    
+    						android:layout_height="fill_parent"
+							android:paddingLeft="200px" 
+    						android:textSize="25px"
+   							android:text="短信类型"/>
+   						<Spinner android:id="@+id/typeSpn"    
+    						android:layout_width="fill_parent"    
+          	 				android:layout_height="fill_parent"/> 
+          	 		</LinearLayout>
+					</TableRow>
+					<TableRow>
+						<TextView
+    						android:layout_width="fill_parent"    
+    						android:layout_height="fill_parent"
+    						android:textSize="25px"   
+   							android:text="短信内容"/>
+						<EditText
+        					android:id="@+id/msgTxt"  
+   							android:minLines="7"
+    						android:layout_width="fill_parent"    
+          	 				android:layout_height="fill_parent"/>
+   							/>
+					</TableRow>
+					<TableRow
+						android:paddingTop="20dp"
+    					android:gravity="center">   
+						<Button
+    						android:layout_width="100dp"    
+    						android:layout_height="wrap_content"
+    						android:text = "发送短信"
+       	 					android:id="@+id/submitBtn"  
+   						/>
+					</TableRow>
+				</TableLayout>
+			</LinearLayout>
+
+
+		</LinearLayout>
+		
+         

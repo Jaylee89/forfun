@@ -1,0 +1,52 @@
+8
+
+dir
+10842
+svn://218.206.31.139/fbty/develop/projects/AndroidGdsms/src/com/fbty/base/exception
+svn://218.206.31.139
+
+
+
+2011-04-22T01:05:48.545911Z
+10807
+zhoulei
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e7075f58-a85f-f344-b845-feb1385c381f
+
+ServiceException.java
+file
+
+
+
+
+2011-04-22T01:06:34.067499Z
+09b74c90a67bdda17fe9259d5a0277f9
+2011-04-22T01:05:48.545911Z
+10807
+zhoulei
+
+SystemException.java
+file
+
+
+
+
+2011-04-22T01:06:34.083124Z
+6f54d117c46da7adbe8a79d2edf55c41
+2011-04-22T01:05:48.545911Z
+10807
+zhoulei
+

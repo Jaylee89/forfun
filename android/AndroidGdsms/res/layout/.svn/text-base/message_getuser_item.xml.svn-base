@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ 		android:layout_width="wrap_content"  
+    	android:layout_height="wrap_content"
+			>
+			<TableRow
+				android:background="#22A5A5A5"
+			>
+<!--		姓名-->
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/getuser_userName"
+				android:text=""
+				android:height="50dp"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+				android:background="#50ffffff"
+				android:gravity="center"/>
+<!--		职位	-->
+			<TextView
+			android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/getuser_userPosition"
+				android:background="#50ffffff"
+				android:gravity="center"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+			></TextView>
+<!--		位置-->
+			<TextView
+			android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/getuser_location"
+				android:text=""
+				android:background="#50ffffff"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+				android:gravity="center"
+			></TextView>
+<!--		性别	-->
+			<TextView
+			android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/getuser_userSex"
+				android:text=""
+				android:background="#50ffffff"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+				android:gravity="center"
+			></TextView>
+<!--		单位	-->
+			<TextView
+			android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/getuser_userUnit"
+				android:text=""
+				android:background="#50ffffff"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+				android:gravity="center"
+			></TextView>
+<!--		电话	-->
+			<TextView
+			android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/getuser_userMobile"
+				android:text=""
+				android:background="#50ffffff"
+				android:textColor="@color/black"
+				android:width="150dp"
+				android:layout_margin="1dp"
+				android:gravity="center"
+			></TextView>
+			</TableRow>
+	
+</TableLayout>

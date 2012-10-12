@@ -1,0 +1,106 @@
+8
+
+dir
+10748
+svn://218.206.31.139/fbty/develop/projects/AndroidGdsms
+svn://218.206.31.139
+
+
+
+2011-04-14T07:27:20.151375Z
+10745
+zhoulei
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e7075f58-a85f-f344-b845-feb1385c381f
+
+default.properties
+file
+10755
+
+
+
+2011-04-14T07:35:46.718750Z
+69559dd1bfca4ef28fa82da92ddc2044
+2011-04-14T07:27:20.151375Z
+10745
+zhoulei
+
+.classpath
+file
+
+
+
+
+2011-04-14T07:35:46.734375Z
+2f87a583177a9180e6639c3b073f1470
+2011-04-14T07:27:20.151375Z
+10745
+zhoulei
+
+proguard.cfg
+file
+10755
+
+
+
+2011-04-14T07:35:46.734375Z
+bec1efcef0f2c9b790a863a8a7d4e668
+2011-04-14T07:27:20.151375Z
+10745
+zhoulei
+
+assets
+dir
+
+.project
+file
+
+
+
+
+2011-04-14T07:35:46.734375Z
+5fd9492c758d0779fbd2c1438980ad8a
+2011-04-14T07:27:20.151375Z
+10745
+zhoulei
+
+AndroidManifest.xml
+file
+10829
+
+
+
+2011-04-23T03:34:43.328125Z
+92d7c676f4b4eb0db025fa3b2eac03d3
+2011-04-23T04:44:04.717786Z
+10829
+lvbingfeng
+
+src
+dir
+
+bin
+dir
+
+gen
+dir
+
+res
+dir
+
+.settings
+dir
+

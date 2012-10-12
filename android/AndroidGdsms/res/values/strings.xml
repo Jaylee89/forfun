@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">地质灾害短信发布手机终端</string>
+    <string name="send_message">短信发布</string>
+    <string name="userName">姓名</string>
+    <string name="userPosition">职位</string>
+    <string name="location">所在地区</string>
+    <string name="userSex">性别</string>
+    <string name="userUnit">单位</string>
+    <string name="userMobile">手机号码</string>
+<!--    上报查询-->
+    <string name="area">地区</string>
+  	<string name="up_person">上报人</string>
+  	<string name="up_person_mobile">上报人手机</string>
+  	<string name="send_date">上报时间</string>
+    <string name="msg_context">信息内容</string>
+    <string name="up_state">上报状态</string>
+<!--   下发信息查询 -->
+	<string name="down_pici">批次</string>
+  	<string name="down_area">发送地区</string>
+  	<string name="down_person">发送者</string>
+  	<string name="down_date">发送时间</string>
+    <string name="down_tiaoshu">发送条数</string>
+    <string name="down_back">回执条数</string>
+    <string name="down_need_back">是否回执</string>
+    <string name="down_context">信息内容</string>
+    <string name="down_rate">发送成功率</string>
+    
+    <!--   下发信息详情 -->
+	<string name="details_pici">批次</string>
+  	<string name="details_person">接收人</string>
+  	<string name="details_position">职位</string>
+  	<string name="details_mobile">接收人手机</string>
+    <string name="details_quxian">区县</string>
+    <string name="details_town">乡镇</string>
+    <string name="details_village">村组</string>
+    <string name="details_zaihaidian">灾害点</string>
+    <string name="details_sendTime">发送时间</string>
+    <string name="details_content">信息内容</string>
+    <string name="details_receiptCode">回执码</string>
+    <string name="details_isReceipt">是否回执</string>
+    <string name="details_result">是否发送成功</string>
+    
+</resources>

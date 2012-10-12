@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string-array name="text">
+		<item>局长</item>
+		<item>副局长</item>
+		<item>主任</item>
+		<item>副主任</item>
+		<item>主任科员</item>
+		<item>救灾仓储</item>
+		<item>灾害统计</item>
+		<item>灾害管理</item>
+		<item>总工</item>
+		<item>处长</item>
+		<item>副处长</item>
+		<item>助调</item>
+		<item>台长</item>
+		<item>副台长</item>
+		<item>助理巡视</item>
+		<item>助理</item>
+		<item>高工</item>
+		<item>高级会计师</item>
+		<item>党委书记</item>
+		<item>副总经理</item>
+		<item>副总书记</item>
+		<item>副总工程师</item>
+		<item>队长</item>
+		<item>院长</item>
+		<item>站长</item>
+		<item>科长</item>
+		<item>副科长</item>
+		<item>办事员</item>
+		<item>所长</item>
+		<item>副所长</item>
+		<item>副主任科员</item>
+		<item>工作人员</item>
+		<item>主办</item>
+		<item>办事员</item>
+		<item>技术员</item>
+		<item>助理工程师</item>
+		<item>职员</item>
+		<item>监测站</item>
+		<item>副站长</item>
+	</string-array>
+</resources>

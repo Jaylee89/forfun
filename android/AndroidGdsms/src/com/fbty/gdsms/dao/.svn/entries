@@ -1,0 +1,52 @@
+8
+
+dir
+10842
+svn://218.206.31.139/fbty/develop/projects/AndroidGdsms/src/com/fbty/gdsms/dao
+svn://218.206.31.139
+
+
+
+2011-04-14T07:27:20.151375Z
+10745
+zhoulei
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e7075f58-a85f-f344-b845-feb1385c381f
+
+EntityDao.java
+file
+
+
+
+
+2011-04-14T07:35:31.468750Z
+783d019373b1feaa49e5855090e0896c
+2011-04-14T07:27:20.151375Z
+10745
+zhoulei
+
+SimpleDao.java
+file
+
+
+
+
+2011-04-14T07:35:31.468750Z
+70c1a16942666d3d91927e02b8799b2a
+2011-04-14T07:27:20.151375Z
+10745
+zhoulei
+
